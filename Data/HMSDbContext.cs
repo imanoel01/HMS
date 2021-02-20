@@ -14,5 +14,9 @@ namespace HMS.Data
             
         }
         public DbSet<Customer> Customers { get; set; }
+
+        public DbSet<User> Users { get; set; }
+
+        public DbSet<RoomType> RoomType { get; set; }
     }
 }

@@ -1,14 +1,11 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace HMS.Model
+namespace HMS.Dtos
 {
-    public class Customer
+
+    public class ReadCustomerDto
     {
-        public int Id { get; set; }
+        // public int Id { get; set; }
         public string FirstName { get; set; }
 
         public string MiddleName { get; set; }
@@ -16,9 +13,9 @@ namespace HMS.Model
 
         public string Occupation { get; set; }
 
-      
+
         public string Phone { get; set; }
-        
+
         public string Email { get; set; }
 
         public DateTime DateCreated { get; set; }
