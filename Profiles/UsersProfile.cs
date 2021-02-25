@@ -12,14 +12,17 @@ namespace HMS.Profiles
         public UsersProfile()
         {
             // source => target
+            //user
             CreateMap<CreateUserDto, User>();
             CreateMap<User, ReadUserDto>();
 
-
+            //customer
             CreateMap<CreateCustomerDto, Customer>();
             CreateMap<Customer, ReadCustomerDto>();
 
-            // CreateMap<Customer, ReadUserDto>();
+            //roomtype
+            CreateMap<RoomTypeCreateDto, RoomType>();
+            CreateMap<RoomType,RoomTypeReadDto>();
 
         }
 
