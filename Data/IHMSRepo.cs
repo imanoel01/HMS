@@ -35,9 +35,31 @@ namespace HMS.Data
 
         Customer getCustomerByNamePhoneEmail(string Phone);
 
+        Customer getCustomerById(int id);
+        #region Room Type
         void createRoomType(RoomType roomType);
         IEnumerable<RoomType> getAllRoomTypes();
         RoomType getRoomType(int id);
+        void updateRoomType(RoomType roomtype);
+        void deleteRoomType(RoomType roomType);
+        #endregion
+      
+      #region Room
+        void createRoom(Room room);
+        IEnumerable<Room> getAllRooms();
+        Room getRoom(int id);
+        void updateRoom(Room room);
+#endregion
+        void deleteCustomer(Customer customer);
+
+        void updateCustomer(Customer customer);
+
+        #region  Room Status
+        void createRoomStatus(RoomStatus rooms);
+        IEnumerable<RoomStatus> GetRoomStatus();
+        RoomStatus GetRoomStatus(int id);
+        
+        #endregion
 
     }
 }

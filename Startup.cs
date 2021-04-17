@@ -19,6 +19,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json.Serialization;
 
 namespace HMS
 {
@@ -35,7 +36,12 @@ namespace HMS
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<HMSDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("HMSConnection")));
-            services.AddControllers();
+            // services.AddControllers();
+              services.AddControllers().AddNewtonsoftJson(s => { var resolver= s.SerializerSettings.ContractResolver;
+            if (resolver==null)
+            {
+               (resolver as DefaultContractResolver).NamingStrategy =null; 
+            }});
             //   var appSettings=  services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);

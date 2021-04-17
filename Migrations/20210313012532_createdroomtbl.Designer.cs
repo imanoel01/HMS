@@ -4,14 +4,16 @@ using HMS.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HMS.Migrations
 {
     [DbContext(typeof(HMSDbContext))]
-    partial class HMSDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210313012532_createdroomtbl")]
+    partial class createdroomtbl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -74,9 +76,6 @@ namespace HMS.Migrations
                     b.Property<int>("RoomNo")
                         .HasColumnType("int");
 
-                    b.Property<int>("RoomStatusId")
-                        .HasColumnType("int");
-
                     b.Property<int>("RoomTypeId")
                         .HasColumnType("int");
 
@@ -85,29 +84,9 @@ namespace HMS.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RoomStatusId");
-
                     b.HasIndex("RoomTypeId");
 
                     b.ToTable("Rooms");
-                });
-
-            modelBuilder.Entity("HMS.Model.RoomStatus", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("RoomStatus");
                 });
 
             modelBuilder.Entity("HMS.Model.RoomType", b =>
@@ -175,12 +154,6 @@ namespace HMS.Migrations
 
             modelBuilder.Entity("HMS.Model.Room", b =>
                 {
-                    b.HasOne("HMS.Model.RoomStatus", "RoomStatus")
-                        .WithMany()
-                        .HasForeignKey("RoomStatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("HMS.Model.RoomType", "RoomType")
                         .WithMany("Rooms")
                         .HasForeignKey("RoomTypeId")

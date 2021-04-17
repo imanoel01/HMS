@@ -18,5 +18,8 @@ namespace HMS.Data
         public DbSet<User> Users { get; set; }
 
         public DbSet<RoomType> RoomType { get; set; }
+
+        public DbSet<Room> Rooms { get; set; }
+        public DbSet<RoomStatus> RoomStatus { get; set; }
     }
 }

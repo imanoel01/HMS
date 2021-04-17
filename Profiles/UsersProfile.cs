@@ -24,6 +24,16 @@ namespace HMS.Profiles
             CreateMap<RoomTypeCreateDto, RoomType>();
             CreateMap<RoomType,RoomTypeReadDto>();
 
+            //room
+            CreateMap<RoomCreateDto, Room>();
+            CreateMap<Room,RoomReadDto>();
+
+               //roomstatus
+            CreateMap<RoomStatusCreateDto, RoomStatus>();
+            CreateMap<RoomStatus,RoomStatusReadDto>();
+
+
+
         }
 
     }

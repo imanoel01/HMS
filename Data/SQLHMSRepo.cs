@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HMS.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace HMS.Data
 {
@@ -108,7 +109,7 @@ namespace HMS.Data
                 {
                     throw new Exception("User Already Exist. Please update User");
                 }
-                customer.Email =customer.Email.ToLower();
+                customer.Email = customer.Email!=null? customer.Email.ToLower():"";
                 _context.Add(customer);
 
         }
@@ -133,6 +134,83 @@ namespace HMS.Data
         public RoomType getRoomType(int id)
         {
             return _context.RoomType.FirstOrDefault(rt =>rt.Id ==id);
+        }
+
+         public void createRoom(Room room)
+        {
+            var r = _context.Rooms.FirstOrDefault(r=>r.RoomNo==room.RoomNo);
+            if(r!=null)
+                throw new Exception("Room Number already exists");
+            _context.Rooms.Add(room);
+        }
+
+         public IEnumerable<Room> getAllRooms()
+        {
+        //   var r=  _context.Rooms.Include(r => r.RoomType).ToList();
+            return _context.Rooms.Include(r=>r.RoomType).ToList();
+        }
+
+             public Room getRoom(int id)
+        {
+            return _context.Rooms.FirstOrDefault(rt =>rt.Id ==id);
+        }
+
+        public Customer getCustomerById(int id)
+        {
+            return _context.Customers.FirstOrDefault(
+                c=>c.Id ==id
+                );
+        }
+
+        public void deleteCustomer(Customer customer)
+        {
+         if(customer ==null)
+            throw new ArgumentNullException(nameof(customer));
+
+            _context.Customers.Remove(customer);
+
+            
+        }
+
+        public void updateCustomer(Customer customer)
+        {
+            //Nothing
+        }
+
+        public void createRoomStatus(RoomStatus roomStatus)
+        {
+           var rs = _context.RoomStatus.FirstOrDefault(r=>r.Name==roomStatus.Name);
+            if(rs!=null)
+                throw new Exception("Room Status already exists");
+            _context.RoomStatus.Add(roomStatus);
+        }
+
+        public IEnumerable<RoomStatus> GetRoomStatus()
+        {
+          return  _context.RoomStatus.ToList();
+        }
+
+        public RoomStatus GetRoomStatus(int id)
+        {
+            return _context.RoomStatus.FirstOrDefault(rs=>rs.Id ==id);
+        }
+
+        public void deleteRoomType(RoomType roomType)
+        {
+                if(roomType ==null)
+            throw new ArgumentNullException(nameof(roomType));
+
+            _context.RoomType.Remove(roomType);
+        }
+
+        public void updateRoomType(RoomType roomtype)
+        {
+           //Do NOTHING 
+        }
+
+        public void updateRoom(Room room)
+        {
+            //DO NOTHING
         }
     }
 }

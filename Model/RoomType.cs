@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace HMS.Model{
 
@@ -9,5 +10,7 @@ namespace HMS.Model{
        public string Description { get; set; }
        public DateTime DateCreated { get; set; }
        public DateTime DateUpdated {get; set;}
+
+       public ICollection<Room> Rooms { get; set; }
    }
 }

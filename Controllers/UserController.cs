@@ -31,7 +31,7 @@ namespace Namespace
             _userService= userService;
         }
 
-       [AllowAnonymous]
+        [AllowAnonymous]
         [HttpPost("authenticate")]
         public IActionResult Authenticate(AuthenticateRequest model)
         {
@@ -46,7 +46,7 @@ namespace Namespace
         }
 
 
-       [AllowAnonymous]
+        [AllowAnonymous]
         [HttpPost("refresh-token")]
         public IActionResult RefreshToken()
         {
@@ -84,7 +84,7 @@ namespace Namespace
         }
 
 
-       [Authorize]
+        [Authorize]
         [HttpGet("{username}")]
         public ActionResult<User> Get(string username)  {
             var user = _repository.getUserByUsername(username);
@@ -99,7 +99,7 @@ namespace Namespace
         }
 
 
-      [AllowAnonymous]
+        [AllowAnonymous]
         [HttpPost("register")]
         public ActionResult<ReadUserDto> Post(CreateUserDto createUser)
         {
@@ -135,7 +135,7 @@ namespace Namespace
 
 
 
-       [Authorize]
+        [Authorize]
         [HttpGet("getall")]
         public IActionResult GetAll()
         {

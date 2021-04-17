@@ -23,12 +23,27 @@ namespace HMS.Data
             throw new NotImplementedException();
         }
 
+        public void createRoomStatus(RoomStatus rooms)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void createRoom(Room room)
+        {
+            throw new NotImplementedException();
+        }
+
         public void createRoomType(RoomType roomType)
         {
             throw new NotImplementedException();
         }
 
         public void createUser(User User)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void deleteCustomer(Customer customer)
         {
             throw new NotImplementedException();
         }
@@ -53,12 +68,37 @@ new Customer{FirstName="JUnior",LastName="Harris", MiddleName="I"},
             return customers;
         }
 
+        public IEnumerable<Room> getAllRooms()
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<RoomType> getAllRoomTypes()
         {
             throw new NotImplementedException();
         }
 
+        public Customer getCustomerById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Customer getCustomerByNamePhoneEmail(string Phone)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Room getRoom(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<RoomStatus> GetRoomStatus()
+        {
+            throw new NotImplementedException();
+        }
+
+        public RoomStatus GetRoomStatus(int id)
         {
             throw new NotImplementedException();
         }
@@ -108,7 +148,27 @@ new Customer{FirstName="JUnior",LastName="Harris", MiddleName="I"},
             throw new NotImplementedException();
         }
 
+        public void updateCustomer(Customer customer)
+        {
+            throw new NotImplementedException();
+        }
+
         public void UpdateUser(User user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void deleteRoomType(RoomType roomType)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void updateRoomType(RoomType roomtype)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void updateRoom(Room room)
         {
             throw new NotImplementedException();
         }
