@@ -24,11 +24,11 @@ namespace Namespace
 
         // private IUserService _userService;
 
-        public UserController(IUserService userService,IHMSRepo repository, IMapper mapper)
+        public UserController(IUserService userService, IHMSRepo repository, IMapper mapper)
         {
             _repository = repository;
-            _mapper= mapper;
-            _userService= userService;
+            _mapper = mapper;
+            _userService = userService;
         }
 
         [AllowAnonymous]
@@ -86,7 +86,8 @@ namespace Namespace
 
         [Authorize]
         [HttpGet("{username}")]
-        public ActionResult<User> Get(string username)  {
+        public ActionResult<User> Get(string username)
+        {
             var user = _repository.getUserByUsername(username);
 
             if (user == null)
@@ -110,7 +111,7 @@ namespace Namespace
             ReadUserDto readUser = new ReadUserDto();
             try
             {
-            _repository.BeginTransaction();
+                _repository.BeginTransaction();
 
                 Guid genUserId = Guid.NewGuid();
                 var userModel = _mapper.Map<User>(createUser);
@@ -145,10 +146,11 @@ namespace Namespace
 
 
         [HttpGet("{id}/refresh-tokens")]
-        public IActionResult GetRefreshToken(string userId){
+        public IActionResult GetRefreshToken(string userId)
+        {
             var user = _userService.GetById(userId);
 
-            if(user == null)
+            if (user == null)
             {
                 return NotFound();
             }
@@ -158,28 +160,32 @@ namespace Namespace
 
         //helper methods
 
-        private void setTokenCookie(string token){
-            var cookieOptions = new CookieOptions{
-                HttpOnly =true,
+        private void setTokenCookie(string token)
+        {
+            var cookieOptions = new CookieOptions
+            {
+                HttpOnly = true,
                 //using five minutes to test
-                Expires =DateTime.UtcNow.AddMinutes(5)
+                Expires = DateTime.UtcNow.AddMinutes(5)
             };
-        Response.Cookies.Append("refreshToken",token,cookieOptions);
+            Response.Cookies.Append("refreshToken", token, cookieOptions);
         }
 
 
-        private string ipAddress(){
-            if(Request.Headers.ContainsKey("X-Forwarded-For"))
+        private string ipAddress()
+        {
+            if (Request.Headers.ContainsKey("X-Forwarded-For"))
             {
                 return Request.Headers["X-Forwarded-For"];
             }
 
-            else{
+            else
+            {
                 return HttpContext.Connection.RemoteIpAddress.MapToIPv4().ToString();
             }
         }
 
-     
+
 
 
     }

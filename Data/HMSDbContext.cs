@@ -21,5 +21,6 @@ namespace HMS.Data
 
         public DbSet<Room> Rooms { get; set; }
         public DbSet<RoomStatus> RoomStatus { get; set; }
+        public DbSet<Reservation> Reservation {get;set;}
     }
 }

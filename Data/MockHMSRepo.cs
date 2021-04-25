@@ -172,5 +172,30 @@ new Customer{FirstName="JUnior",LastName="Harris", MiddleName="I"},
         {
             throw new NotImplementedException();
         }
+
+        public IEnumerable<Room> GetFreeRoom()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void createReservation(Reservation reservation)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Reservation> GetReservations()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Reservation GetReservation(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public dynamic getreadRooms()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

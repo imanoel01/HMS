@@ -47,8 +47,11 @@ namespace HMS.Data
       #region Room
         void createRoom(Room room);
         IEnumerable<Room> getAllRooms();
+
+        dynamic getreadRooms();
         Room getRoom(int id);
         void updateRoom(Room room);
+        IEnumerable<Room> GetFreeRoom();
 #endregion
         void deleteCustomer(Customer customer);
 
@@ -61,5 +64,12 @@ namespace HMS.Data
         
         #endregion
 
+        #region Reservation
+      void createReservation (Reservation reservation);
+      IEnumerable<Reservation> GetReservations();
+
+      Reservation GetReservation(int id);
+
+        #endregion
     }
 }

@@ -32,6 +32,10 @@ namespace HMS.Profiles
             CreateMap<RoomStatusCreateDto, RoomStatus>();
             CreateMap<RoomStatus,RoomStatusReadDto>();
 
+                   //reservation
+            CreateMap<CreateReservationDto, Reservation>();
+            CreateMap<Reservation,ReservationReadDto>();
+
 
 
         }

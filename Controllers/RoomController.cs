@@ -27,9 +27,19 @@ namespace HMS.Controllers
         public IActionResult Get()
         {
 
-            var room = _repository.getAllRooms();
-            var readRoom = _Mapper.Map<IEnumerable<RoomReadDto>>(room);
+            var room = _repository.getreadRooms();
+            // var readRoom = _Mapper.Map<IEnumerable<RoomReadDto>>(room);
             //   var  readRoomType = _Mapper.Map<RoomTypeReadDto>(roomType);
+            return Ok(room);
+        }
+        [HttpGet("freerooms")]
+        [Authorize]
+        public IActionResult GetFreeRooms()
+        {
+
+            var room = _repository.GetFreeRoom();
+            var readRoom = _Mapper.Map<IEnumerable<RoomReadDto>>(room);
+
             return Ok(readRoom);
         }
         [Authorize]
@@ -82,7 +92,7 @@ namespace HMS.Controllers
 
         // }
 
-           [Authorize]
+        [Authorize]
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -94,17 +104,17 @@ namespace HMS.Controllers
 
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, RoomCreateDto  model)
+        public IActionResult Put(int id, RoomCreateDto model)
         {
-            var room= _repository.getRoom(id);
-            if (room==null)
-            return NotFound();
-            var roomUpdateModel=  _Mapper.Map(model,room);
+            var room = _repository.getRoom(id);
+            if (room == null)
+                return NotFound();
+            var roomUpdateModel = _Mapper.Map(model, room);
 
             _repository.updateRoom(roomUpdateModel);
             _repository.saveChanges();
             //sending the updated data model
-            var roomUpdatedModel =  _Mapper.Map<RoomReadDto>(roomUpdateModel);
+            var roomUpdatedModel = _Mapper.Map<RoomReadDto>(roomUpdateModel);
             return Ok(roomUpdatedModel);
         }
 

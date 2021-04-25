@@ -8,7 +8,8 @@ namespace HMS
         public string DataUrl { get; set; }
         public string DataValueField { get; set; }
         public string DataDisplayField { get; set; }
-
+        public bool CustomSelect { get; set; }
+        public string CustomSelectUrl { get; set; }
 
     }
 }

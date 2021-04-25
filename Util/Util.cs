@@ -28,7 +28,8 @@ namespace HMS
                         model.DataUrl = (string)attr.ConstructorArguments[3].Value;
                         model.DataValueField = (string)attr.ConstructorArguments[4].Value;
                         model.DataDisplayField = (string)attr.ConstructorArguments[5].Value;
-
+                        model.CustomSelect=(bool)attr.ConstructorArguments[6].Value;
+                        model.CustomSelectUrl=(string)attr.ConstructorArguments[7].Value;
                     }
                     if (!string.IsNullOrWhiteSpace(model.FieldName))
                     {
@@ -44,19 +45,26 @@ namespace HMS
             return GetMetaData<CustomerModel>();
         }
 
-          internal static IList<ModelMetaData> GetRoomTypeMetaData()
+        internal static IList<ModelMetaData> GetRoomTypeMetaData()
         {
             return GetMetaData<RoomTypeModel>();
         }
 
-        internal static IList<ModelMetaData> GetRoomMetaData(){
+        internal static IList<ModelMetaData> GetRoomMetaData()
+        {
             return GetMetaData<RoomModel>();
         }
 
-            internal static IList<ModelMetaData> GetRoomStatusMetaData(){
+        internal static IList<ModelMetaData> GetRoomStatusMetaData()
+        {
             return GetMetaData<RoomStatusModel>();
         }
 
-        
+         internal static IList<ModelMetaData> GetReservationMetaData()
+        {
+            return GetMetaData<ReservationModel>();
+        }
+
+
     }
 }

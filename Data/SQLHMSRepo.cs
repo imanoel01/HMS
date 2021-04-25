@@ -212,5 +212,46 @@ namespace HMS.Data
         {
             //DO NOTHING
         }
+
+        public IEnumerable<Room> GetFreeRoom()
+        {
+            //seed the table for room status with bookedunpaid,bookedpaid,free,inuse 
+          return  _context.Rooms.Where(c =>c.RoomStatusId==3).ToList();
+        //_context.Rooms.Join
+   
+        }
+
+        public void createReservation(Reservation reservation)
+        {
+          _context.Reservation.Add(reservation);
+        }
+
+        public IEnumerable<Reservation> GetReservations()
+        {
+          return  _context.Reservation.ToList();
+        }
+
+        public Reservation GetReservation(int id)
+        {
+           return _context.Reservation.Where(r =>r.Id ==id).FirstOrDefault();
+        }
+
+        public dynamic getreadRooms()
+        {
+            return  (from r in  _context.Rooms
+      join rs in  _context.RoomStatus
+      on r.RoomStatusId equals rs.Id
+      join rt in _context.RoomType
+      on r.RoomTypeId equals rt.Id
+      select new
+      {
+          Id=r.Id,
+    RoomNumber=r.RoomNo,
+      Rate=r.Rate,
+      RoomStatus=rs.Name,
+      RoomType= rt.Name,
+      }
+       ).ToList();
+        }
     }
 }
