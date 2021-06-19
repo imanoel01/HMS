@@ -1,4 +1,6 @@
- namespace HMS.Model{
+using System.Collections.Generic;
+
+namespace HMS.Model{
 
 
 public class Room{
@@ -14,5 +16,6 @@ public class Room{
     public int Status { get; set; }
     public int RoomStatusId { get; set; }
     public RoomStatus RoomStatus { get; set; }
+    // public ICollection<Bill> Bills { get; set; }
 }
 }

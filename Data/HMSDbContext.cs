@@ -22,5 +22,27 @@ namespace HMS.Data
         public DbSet<Room> Rooms { get; set; }
         public DbSet<RoomStatus> RoomStatus { get; set; }
         public DbSet<Reservation> Reservation {get;set;}
+        public DbSet<PaymentStatus> PaymentStatus { get; set; }
+       public DbSet<Bill> Bill { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+    //        modelBuilder.Entity<Bill>()
+    // .HasOne<Room>(b =>b.Room)
+    // .WithMany(r => r.Bills)
+    // .HasForeignKey(b => b.RoomId)
+    // .OnDelete(DeleteBehavior.NoAction);
+    //     }
+
+    // modelBuilder.Entity<Room>()
+    // .HasOne<Bill>(b =>b.Room)
+    // .WithMany(r => r.Bills)
+    // .HasForeignKey(b => b.RoomId)
+    // .OnDelete(DeleteBehavior.NoAction);
+    //     }
+        
     }
 }
+
+}
+

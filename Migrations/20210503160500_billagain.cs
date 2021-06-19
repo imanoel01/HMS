@@ -2,7 +2,7 @@
 
 namespace HMS.Migrations
 {
-    public partial class added_bills_reservation_paymentstatus : Migration
+    public partial class billagain : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -1,6 +1,5 @@
 /Users/imanoel/Documents/repo/HMS/bin/Debug/netcoreapp3.1/appsettings.Development.json
 /Users/imanoel/Documents/repo/HMS/bin/Debug/netcoreapp3.1/appsettings.json
-/Users/imanoel/Documents/repo/HMS/bin/Debug/netcoreapp3.1/Properties/launchSettings.json
 /Users/imanoel/Documents/repo/HMS/bin/Debug/netcoreapp3.1/HMS.deps.json
 /Users/imanoel/Documents/repo/HMS/bin/Debug/netcoreapp3.1/HMS.runtimeconfig.json
 /Users/imanoel/Documents/repo/HMS/bin/Debug/netcoreapp3.1/HMS.runtimeconfig.dev.json
@@ -66,3 +65,4 @@
 /Users/imanoel/Documents/repo/HMS/bin/Debug/netcoreapp3.1/runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll
 /Users/imanoel/Documents/repo/HMS/obj/Debug/netcoreapp3.1/HMS.MvcApplicationPartsAssemblyInfo.cs
 /Users/imanoel/Documents/repo/HMS/obj/Debug/netcoreapp3.1/HMS.csproj.CopyComplete
+/Users/imanoel/Documents/repo/HMS/obj/Debug/netcoreapp3.1/scopedcss/bundle/HMS.styles.css

@@ -100,24 +100,24 @@ namespace HMS.Data
 
         public void createCustomer(Customer customer)
         {
-            var customerExist= _context.Customers.FirstOrDefault(
-                c =>c.Phone == customer.Phone
-                ||c.Email ==customer.Email
+            var customerExist = _context.Customers.FirstOrDefault(
+                c => c.Phone == customer.Phone
+                || c.Email == customer.Email
                 );
 
-                if (customerExist !=null)
-                {
-                    throw new Exception("User Already Exist. Please update User");
-                }
-                customer.Email = customer.Email!=null? customer.Email.ToLower():"";
-                _context.Add(customer);
+            if (customerExist != null)
+            {
+                throw new Exception("User Already Exist. Please update User");
+            }
+            customer.Email = customer.Email != null ? customer.Email.ToLower() : "";
+            _context.Add(customer);
 
         }
 
         public Customer getCustomerByNamePhoneEmail(string Phone)
         {
             return _context.Customers.FirstOrDefault(
-                c=>c.Phone ==Phone
+                c => c.Phone == Phone
                 );
         }
 
@@ -133,43 +133,43 @@ namespace HMS.Data
 
         public RoomType getRoomType(int id)
         {
-            return _context.RoomType.FirstOrDefault(rt =>rt.Id ==id);
+            return _context.RoomType.FirstOrDefault(rt => rt.Id == id);
         }
 
-         public void createRoom(Room room)
+        public void createRoom(Room room)
         {
-            var r = _context.Rooms.FirstOrDefault(r=>r.RoomNo==room.RoomNo);
-            if(r!=null)
+            var r = _context.Rooms.FirstOrDefault(r => r.RoomNo == room.RoomNo);
+            if (r != null)
                 throw new Exception("Room Number already exists");
             _context.Rooms.Add(room);
         }
 
-         public IEnumerable<Room> getAllRooms()
+        public IEnumerable<Room> getAllRooms()
         {
-        //   var r=  _context.Rooms.Include(r => r.RoomType).ToList();
-            return _context.Rooms.Include(r=>r.RoomType).ToList();
+            //   var r=  _context.Rooms.Include(r => r.RoomType).ToList();
+            return _context.Rooms.Include(r => r.RoomType).ToList();
         }
 
-             public Room getRoom(int id)
+        public Room getRoom(int id)
         {
-            return _context.Rooms.FirstOrDefault(rt =>rt.Id ==id);
+            return _context.Rooms.FirstOrDefault(rt => rt.Id == id);
         }
 
         public Customer getCustomerById(int id)
         {
             return _context.Customers.FirstOrDefault(
-                c=>c.Id ==id
+                c => c.Id == id
                 );
         }
 
         public void deleteCustomer(Customer customer)
         {
-         if(customer ==null)
-            throw new ArgumentNullException(nameof(customer));
+            if (customer == null)
+                throw new ArgumentNullException(nameof(customer));
 
             _context.Customers.Remove(customer);
 
-            
+
         }
 
         public void updateCustomer(Customer customer)
@@ -179,33 +179,33 @@ namespace HMS.Data
 
         public void createRoomStatus(RoomStatus roomStatus)
         {
-           var rs = _context.RoomStatus.FirstOrDefault(r=>r.Name==roomStatus.Name);
-            if(rs!=null)
+            var rs = _context.RoomStatus.FirstOrDefault(r => r.Name == roomStatus.Name);
+            if (rs != null)
                 throw new Exception("Room Status already exists");
             _context.RoomStatus.Add(roomStatus);
         }
 
         public IEnumerable<RoomStatus> GetRoomStatus()
         {
-          return  _context.RoomStatus.ToList();
+            return _context.RoomStatus.ToList();
         }
 
         public RoomStatus GetRoomStatus(int id)
         {
-            return _context.RoomStatus.FirstOrDefault(rs=>rs.Id ==id);
+            return _context.RoomStatus.FirstOrDefault(rs => rs.Id == id);
         }
 
         public void deleteRoomType(RoomType roomType)
         {
-                if(roomType ==null)
-            throw new ArgumentNullException(nameof(roomType));
+            if (roomType == null)
+                throw new ArgumentNullException(nameof(roomType));
 
             _context.RoomType.Remove(roomType);
         }
 
         public void updateRoomType(RoomType roomtype)
         {
-           //Do NOTHING 
+            //Do NOTHING 
         }
 
         public void updateRoom(Room room)
@@ -216,42 +216,75 @@ namespace HMS.Data
         public IEnumerable<Room> GetFreeRoom()
         {
             //seed the table for room status with bookedunpaid,bookedpaid,free,inuse 
-          return  _context.Rooms.Where(c =>c.RoomStatusId==3).ToList();
-        //_context.Rooms.Join
-   
+            return _context.Rooms.Where(c => c.RoomStatusId == 3).ToList();
+            //_context.Rooms.Join
+
         }
 
         public void createReservation(Reservation reservation)
         {
-          _context.Reservation.Add(reservation);
+            _context.Reservation.Add(reservation);
         }
 
         public IEnumerable<Reservation> GetReservations()
         {
-          return  _context.Reservation.ToList();
+            return _context.Reservation.ToList();
         }
 
         public Reservation GetReservation(int id)
         {
-           return _context.Reservation.Where(r =>r.Id ==id).FirstOrDefault();
+            return _context.Reservation.Where(r => r.Id == id).FirstOrDefault();
         }
 
         public dynamic getreadRooms()
         {
-            return  (from r in  _context.Rooms
-      join rs in  _context.RoomStatus
-      on r.RoomStatusId equals rs.Id
-      join rt in _context.RoomType
-      on r.RoomTypeId equals rt.Id
-      select new
-      {
-          Id=r.Id,
-    RoomNumber=r.RoomNo,
-      Rate=r.Rate,
-      RoomStatus=rs.Name,
-      RoomType= rt.Name,
-      }
+            return (from r in _context.Rooms
+                    join rs in _context.RoomStatus
+                    on r.RoomStatusId equals rs.Id
+                    join rt in _context.RoomType
+                    on r.RoomTypeId equals rt.Id
+                    select new
+                    {
+                        Id = r.Id,
+                        RoomNumber = r.RoomNo,
+                        Rate = r.Rate,
+                        RoomStatus = rs.Name,
+                        RoomType = rt.Name,
+                    }
        ).ToList();
+        }
+
+        public dynamic GetBills()
+        {
+            return (from b in _context.Bill
+                    join rs in _context.Reservation
+                    on b.ReservationId equals rs.Id
+                    join ps in _context.PaymentStatus
+                    on b.PaymentStatusId equals ps.Id
+                    join c in _context.Customers
+                    on rs.CustomerId equals c.Id
+                    join rm in _context.Rooms
+                    on rs.RoomId equals rm.Id
+
+                    select new
+                    {
+                        Id = b.Id,
+                        ReservationId = rs.Id,
+                        Customer = $"{c.FirstName} {c.LastName}",
+                        RoomId = rs.RoomId,
+                        NumberofNightStay = b.NumberOfNightStay,
+                        AmountExpected = rm.Rate * b.NumberOfNightStay,
+                        //rm
+
+                    }).ToList();
+        }
+
+       
+
+        public void updateRoomStatus(int roomId, RoomStatusEnum roomstatusenum)
+        {
+           var room = _context.Rooms.FirstOrDefault(r=>r.Id ==roomId);
+           room.RoomStatusId=(int)roomstatusenum;
         }
     }
 }

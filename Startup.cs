@@ -11,6 +11,7 @@ using HMS.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -37,11 +38,14 @@ namespace HMS
         {
             services.AddDbContext<HMSDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("HMSConnection")));
             // services.AddControllers();
-              services.AddControllers().AddNewtonsoftJson(s => { var resolver= s.SerializerSettings.ContractResolver;
-            if (resolver==null)
+            services.AddControllers().AddNewtonsoftJson(s =>
             {
-               (resolver as DefaultContractResolver).NamingStrategy =null; 
-            }});
+                var resolver = s.SerializerSettings.ContractResolver;
+                if (resolver == null)
+                {
+                    (resolver as DefaultContractResolver).NamingStrategy = null;
+                }
+            });
             //   var appSettings=  services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
@@ -64,9 +68,9 @@ namespace HMS
                                 IssuerSigningKey = new SymmetricSecurityKey(key),
                                 ValidateIssuer = false,
                                 ValidateAudience = false,
-                                
-                    // set clockskew to zero so tokens expire exactly at token expiration time (instead of 5 minutes later)
-                    ClockSkew = TimeSpan.Zero
+
+                                // set clockskew to zero so tokens expire exactly at token expiration time (instead of 5 minutes later)
+                                ClockSkew = TimeSpan.Zero
                             };
                         });
 
@@ -77,7 +81,7 @@ namespace HMS
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-              if (env.IsDevelopment())
+            if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
@@ -97,6 +101,11 @@ namespace HMS
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapGet("/", async context => 
+                { 
+                    await context.Response.WriteAsync("Welcome to HMS API.");
+                
+                });
             });
         }
     }

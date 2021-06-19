@@ -21,7 +21,7 @@ namespace HMS
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>()
-                    .UseUrls("https://localhost:2000"); ;
+                    .UseUrls("https://localhost:5000"); ;
                 });
     }
 }

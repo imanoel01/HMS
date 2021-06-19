@@ -52,7 +52,9 @@ namespace HMS.Data
         Room getRoom(int id);
         void updateRoom(Room room);
         IEnumerable<Room> GetFreeRoom();
-#endregion
+
+       void updateRoomStatus(int roomId, RoomStatusEnum roomstatusenum);
+      #endregion
         void deleteCustomer(Customer customer);
 
         void updateCustomer(Customer customer);
@@ -70,6 +72,10 @@ namespace HMS.Data
 
       Reservation GetReservation(int id);
 
+        #endregion
+
+        #region Bills
+      dynamic GetBills();
         #endregion
     }
 }

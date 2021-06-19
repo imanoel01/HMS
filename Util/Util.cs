@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System;
 using HMS.Model;
-using HMS.EntityModel;
+using HMS.Dtos;
 
 namespace HMS
 {
@@ -42,27 +42,29 @@ namespace HMS
 
         internal static IList<ModelMetaData> GetCustomerMetaData()
         {
-            return GetMetaData<CustomerModel>();
+            return GetMetaData<CreateCustomerDto>();
         }
 
         internal static IList<ModelMetaData> GetRoomTypeMetaData()
         {
-            return GetMetaData<RoomTypeModel>();
+            return GetMetaData<RoomTypeCreateDto>();
         }
 
         internal static IList<ModelMetaData> GetRoomMetaData()
         {
-            return GetMetaData<RoomModel>();
+            // return GetMetaData<RoomModel>();
+            return GetMetaData<RoomCreateDto>();
         }
 
         internal static IList<ModelMetaData> GetRoomStatusMetaData()
         {
-            return GetMetaData<RoomStatusModel>();
+            // return GetMetaData<RoomStatusModel>();
+            return GetMetaData<RoomStatusCreateDto>();
         }
 
          internal static IList<ModelMetaData> GetReservationMetaData()
         {
-            return GetMetaData<ReservationModel>();
+            return GetMetaData<CreateReservationDto>();
         }
 
 

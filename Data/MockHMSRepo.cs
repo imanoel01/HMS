@@ -197,5 +197,37 @@ new Customer{FirstName="JUnior",LastName="Harris", MiddleName="I"},
         {
             throw new NotImplementedException();
         }
+
+        public dynamic GetBills()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void setBookedRoom(int room)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void setFreeRoom(int room)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void setBookedUnpaidRoom(int room)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void setOccupiedRoom(int room)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void updateRoomStatus(int roomId, RoomStatusEnum roomstatusenum)
+        {
+            throw new NotImplementedException();
+        }
+
+    
     }
 }
