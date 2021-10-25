@@ -50,7 +50,7 @@ namespace HMS.Helpers{
                 var jwtToken= (JwtSecurityToken)validatedToken;
                 var userId = jwtToken.Claims.First(x=>x.Type == "id").Value;
                 //attach user tp contesxt on successfuk jwt validation
-                context.Items["User"] = userService.GetById(userId);
+                context.Items["User"] = userService.GetById(long.Parse(userId));
             }
             catch
             {

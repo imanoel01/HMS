@@ -115,8 +115,8 @@ namespace Namespace
 
                 Guid genUserId = Guid.NewGuid();
                 var userModel = _mapper.Map<User>(createUser);
-                userModel.DateCreated = DateTime.Now;
-                userModel.UserId = Guid.NewGuid().ToString("N");
+                //userModel.DateCreated = DateTime.Now;
+                //userModel.UserId = Guid.NewGuid().ToString("N");
                 _repository.createUser(userModel);
                 _repository.saveChanges();
 
@@ -146,7 +146,7 @@ namespace Namespace
 
 
         [HttpGet("{id}/refresh-tokens")]
-        public IActionResult GetRefreshToken(string userId)
+        public IActionResult GetRefreshToken(long userId)
         {
             var user = _userService.GetById(userId);
 

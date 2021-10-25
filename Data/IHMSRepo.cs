@@ -17,7 +17,7 @@ namespace HMS.Data
 
         void DisposeTransaction();
 
-         User getUserByUserId(string userId);
+         User getUserByUserId(long userId);
          User getUserByToken(string token);
          void UpdateUser(User user);
          RefreshToken getUserRefreshToken(User user,string token);
@@ -35,11 +35,11 @@ namespace HMS.Data
 
         Customer getCustomerByNamePhoneEmail(string Phone);
 
-        Customer getCustomerById(int id);
+        Customer getCustomerById(long id);
         #region Room Type
         void createRoomType(RoomType roomType);
         IEnumerable<RoomType> getAllRoomTypes();
-        RoomType getRoomType(int id);
+        RoomType getRoomType(long id);
         void updateRoomType(RoomType roomtype);
         void deleteRoomType(RoomType roomType);
         #endregion
@@ -49,11 +49,11 @@ namespace HMS.Data
         IEnumerable<Room> getAllRooms();
 
         dynamic getreadRooms();
-        Room getRoom(int id);
+        Room getRoom(long id);
         void updateRoom(Room room);
         IEnumerable<Room> GetFreeRoom();
 
-       void updateRoomStatus(int roomId, RoomStatusEnum roomstatusenum);
+       void updateRoomStatus(long roomId, RoomStatusEnum roomstatusenum);
       #endregion
         void deleteCustomer(Customer customer);
 
@@ -62,7 +62,7 @@ namespace HMS.Data
         #region  Room Status
         void createRoomStatus(RoomStatus rooms);
         IEnumerable<RoomStatus> GetRoomStatus();
-        RoomStatus GetRoomStatus(int id);
+        RoomStatus GetRoomStatus(long id);
         
         #endregion
 
@@ -70,7 +70,7 @@ namespace HMS.Data
       void createReservation (Reservation reservation);
       IEnumerable<Reservation> GetReservations();
 
-      Reservation GetReservation(int id);
+      Reservation GetReservation(long id);
 
         #endregion
 

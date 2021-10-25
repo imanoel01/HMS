@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace HMS.Model
 {
-    public class PaymentStatus
+    public class PaymentStatus:BaseEntity
     {
-        public int Id { get; set; }
+      
         public string Name { get; set; }
         public string Description { get; set; }
-        public ICollection<Bill> Bills { get; set; }
+        public virtual ICollection<Bill> Bills { get; set; }
     }
 }

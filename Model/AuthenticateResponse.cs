@@ -9,7 +9,7 @@ namespace HMS.Model
     public class AuthenticateResponse
     {
 
-         public string UserId { get; set; }
+         public long UserId { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public string Middlename { get; set; }
@@ -20,7 +20,7 @@ namespace HMS.Model
         public string RefreshToken { get; set; }
 
         public AuthenticateResponse(User user, string token,string refreshToken){
-            UserId=user.UserId;
+            UserId=user.Id;
             Firstname=user.Firstname;
             Middlename=user.Middlename;
             Lastname=user.Lastname;

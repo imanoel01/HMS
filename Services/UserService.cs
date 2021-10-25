@@ -12,7 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 namespace HMS.Services{
     public interface IUserService{
         AuthenticateResponse Authenticate(AuthenticateRequest model, string ipAddress);
-        User GetById(string userId);
+        User GetById(long userId);
 
         AuthenticateResponse RefreshToken(string token,string ipAddress);
         bool RevokeToken(string token, string ipAddress);
@@ -117,7 +117,7 @@ namespace HMS.Services{
           var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
 
         var tokenDescriptor = new SecurityTokenDescriptor{
-            Subject= new ClaimsIdentity(new[] {new Claim ("id", user.UserId.ToString())}),
+            Subject= new ClaimsIdentity(new[] {new Claim ("id", user.Id.ToString())}),
             Expires= DateTime.UtcNow.AddDays(1),
             SigningCredentials= new SigningCredentials(new SymmetricSecurityKey(key),SecurityAlgorithms.HmacSha256Signature)
         };
@@ -134,7 +134,7 @@ namespace HMS.Services{
             _appSettings= appsettings.Value;
         }
 
-        public User GetById(string userId)
+        public User GetById(long userId)
         {
           return   _repository.getUserByUserId(userId);
         }

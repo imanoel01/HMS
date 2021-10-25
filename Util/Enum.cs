@@ -12,4 +12,12 @@ namespace HMS
         Free=3,
         BookedUnpaid=4
     }
+
+    public enum PaymentMethod{
+        Cash,
+        POS,
+        Online,
+        Transfer,
+        USSD,
+    }
 }

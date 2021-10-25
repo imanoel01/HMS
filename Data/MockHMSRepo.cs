@@ -78,7 +78,7 @@ new Customer{FirstName="JUnior",LastName="Harris", MiddleName="I"},
             throw new NotImplementedException();
         }
 
-        public Customer getCustomerById(int id)
+        public Customer getCustomerById(long id)
         {
             throw new NotImplementedException();
         }
@@ -88,7 +88,7 @@ new Customer{FirstName="JUnior",LastName="Harris", MiddleName="I"},
             throw new NotImplementedException();
         }
 
-        public Room getRoom(int id)
+        public Room getRoom(long id)
         {
             throw new NotImplementedException();
         }
@@ -98,12 +98,12 @@ new Customer{FirstName="JUnior",LastName="Harris", MiddleName="I"},
             throw new NotImplementedException();
         }
 
-        public RoomStatus GetRoomStatus(int id)
+        public RoomStatus GetRoomStatus(long id)
         {
             throw new NotImplementedException();
         }
 
-        public RoomType getRoomType(int id)
+        public RoomType getRoomType(long id)
         {
             throw new NotImplementedException();
         }
@@ -118,7 +118,7 @@ new Customer{FirstName="JUnior",LastName="Harris", MiddleName="I"},
             throw new NotImplementedException();
         }
 
-        public User getUserByUserId(string userId)
+        public User getUserByUserId(long userId)
         {
             throw new NotImplementedException();
         }
@@ -188,7 +188,7 @@ new Customer{FirstName="JUnior",LastName="Harris", MiddleName="I"},
             throw new NotImplementedException();
         }
 
-        public Reservation GetReservation(int id)
+        public Reservation GetReservation(long id)
         {
             throw new NotImplementedException();
         }
@@ -208,22 +208,22 @@ new Customer{FirstName="JUnior",LastName="Harris", MiddleName="I"},
             throw new NotImplementedException();
         }
 
-        public void setFreeRoom(int room)
+        public void setFreeRoom(long room)
         {
             throw new NotImplementedException();
         }
 
-        public void setBookedUnpaidRoom(int room)
+        public void setBookedUnpaidRoom(long room)
         {
             throw new NotImplementedException();
         }
 
-        public void setOccupiedRoom(int room)
+        public void setOccupiedRoom(long room)
         {
             throw new NotImplementedException();
         }
 
-        public void updateRoomStatus(int roomId, RoomStatusEnum roomstatusenum)
+        public void updateRoomStatus(long roomId, RoomStatusEnum roomstatusenum)
         {
             throw new NotImplementedException();
         }

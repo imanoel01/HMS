@@ -9,11 +9,11 @@ using Newtonsoft.Json;
 namespace HMS.Model
 {
     [Owned]
-    public class RefreshToken
+    public class RefreshToken:BaseEntity
     {
-        [Key]
-        [JsonIgnore]
-        public int Id { get; set; }
+        // [Key]
+        // [JsonIgnore]
+        // public int Id { get; set; }
         public string Token { get; set; }
         public DateTime Expires { get; set; }
         public bool IsExpired =>DateTime.UtcNow >= Expires;

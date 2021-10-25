@@ -64,9 +64,9 @@
               "target": "Package",
               "version": "[3.1.9, )"
             },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
+            "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
-              "version": "[3.1.9, )"
+              "version": "[3.1.1, )"
             }
           },
           "imports": [
@@ -87,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.203/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.402/RuntimeIdentifierGraph.json"
         }
       }
     }

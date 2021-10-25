@@ -64,7 +64,7 @@ namespace HMS.Controllers
                 //remain booked before  successful transaction is confirmed.
                 _repository.BeginTransaction();
                 var reservation = _mapper.Map<Reservation>(model);
-                reservation.DateCreated = DateTime.Now;
+               // reservation.DateCreated = DateTime.Now;
                 reservation.ReservationDate = DateTime.Now;
 _repository.updateRoomStatus(reservation.RoomId,RoomStatusEnum.BookedPaid);
                 _repository.createReservation(reservation);

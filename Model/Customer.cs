@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace HMS.Model
 {
-    public class Customer
+    public class Customer : BaseEntity
     {
-        public int Id { get; set; }
+      
         public string FirstName { get; set; }
 
         public string MiddleName { get; set; }
@@ -20,8 +20,6 @@ namespace HMS.Model
         public string Phone { get; set; }
         
         public string Email { get; set; }
-
-        public DateTime DateCreated { get; set; }
-        public DateTime DateModified { get; set; }
+        public virtual ICollection<Reservation> Reservations { get; set; }             
     }
 }

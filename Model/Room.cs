@@ -1,21 +1,25 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace HMS.Model{
+namespace HMS.Model
+{
 
 
-public class Room{
-    public int Id { get; set; }
-    public int RoomNo { get; set; }
-    public string Description { get; set; }
-    
-    
-    public int RoomTypeId { get; set; }
-    public RoomType RoomType { get; set; }
-    public int Capacity { get; set; }
-    public double Rate { get; set; } 
-    public int Status { get; set; }
-    public int RoomStatusId { get; set; }
-    public RoomStatus RoomStatus { get; set; }
-    // public ICollection<Bill> Bills { get; set; }
-}
+    public class Room : BaseEntity
+    {
+
+        public string RoomName { get; set; }
+        public string Description { get; set; }
+        public long RoomTypeId { get; set; }
+        [ForeignKey("RoomTypeId")]
+        public virtual RoomType RoomType { get; set; }
+        public int Capacity { get; set; }
+         [Column(TypeName = "decimal(18,2)")]
+        public decimal Rate { get; set; }
+        public int Status { get; set; }
+        public long RoomStatusId { get; set; }
+        [ForeignKey("RoomStatusId")]
+        public virtual RoomStatus RoomStatus { get; set; }
+        public virtual ICollection<Reservation> Reservations { get; set; }
+    }
 }

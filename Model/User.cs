@@ -6,11 +6,8 @@ using Newtonsoft.Json;
 
 namespace HMS.Model
 {
-    public class User
+    public class User : BaseEntity
     {
-          public int Id { get; set; }
-        public string UserId { get; set; }
-
         public string Firstname { get; set; }
         public string Middlename { get; set; }
         public string Lastname { get; set; }
@@ -19,11 +16,7 @@ namespace HMS.Model
         [JsonIgnore]
         public string Password { get; set; }
 
-        public DateTime DateCreated { get; set; }
-
-        public DateTime DateModified { get; set; }
-
         [JsonIgnore]
-        public List<RefreshToken> RefreshTokens { get; set; }
+        public virtual ICollection<RefreshToken> RefreshTokens { get; set; }
     }
 }

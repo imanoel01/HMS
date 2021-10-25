@@ -5,12 +5,10 @@ using System.Threading.Tasks;
 
 namespace HMS.Model
 {
-    public class RoomStatus
+    public class RoomStatus:BaseEntity
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        
-        public ICollection<Room> Rooms { get; set; }
+        public virtual ICollection<Room> Rooms { get; set; }
     }
 }

@@ -35,11 +35,15 @@ namespace HMS.Controllers
             return Ok(roomStatus);
         }
 
-        // [HttpGet("{id}")]
-        // public ActionResult<string> Get(int id)
-        // {
-        //     return "value";
-        // }
+        [HttpGet("{id}")]
+        public IActionResult Get(long id)
+        {
+           var roomstatus= _repository.GetRoomStatus(id);
+           if (roomstatus is null)
+           return NotFound();
+           var readRoomstatus =_mapper.Map<RoomStatusReadDto>(roomstatus);
+           return Ok(readRoomstatus);
+        }
         [Authorize]
         [HttpPost]
         public IActionResult Post(RoomStatusCreateDto roomStatus)

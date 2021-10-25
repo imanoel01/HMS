@@ -59,7 +59,7 @@ namespace Namespace
             {
                 _repository.BeginTransaction();
                 var customer = _mapper.Map<Customer>(model);
-                customer.DateCreated = DateTime.Now;
+                //customer.DateCreated = DateTime.Now;
                 _repository.createCustomer(customer);
                 _repository.saveChanges();
                 _repository.CommitTransaction();

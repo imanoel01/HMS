@@ -44,9 +44,9 @@ namespace HMS.Data
         }
 
 
-        public User getUserByUserId(string userId)
+        public User getUserByUserId(long userId)
         {
-            return _context.Users.FirstOrDefault(u => u.UserId == userId);
+            return _context.Users.FirstOrDefault(u => u.Id == userId);
 
         }
 
@@ -131,14 +131,14 @@ namespace HMS.Data
             return _context.RoomType.ToList();
         }
 
-        public RoomType getRoomType(int id)
+        public RoomType getRoomType(long id)
         {
             return _context.RoomType.FirstOrDefault(rt => rt.Id == id);
         }
 
         public void createRoom(Room room)
         {
-            var r = _context.Rooms.FirstOrDefault(r => r.RoomNo == room.RoomNo);
+            var r = _context.Rooms.FirstOrDefault(r => r.RoomName == room.RoomName);
             if (r != null)
                 throw new Exception("Room Number already exists");
             _context.Rooms.Add(room);
@@ -150,12 +150,12 @@ namespace HMS.Data
             return _context.Rooms.Include(r => r.RoomType).ToList();
         }
 
-        public Room getRoom(int id)
+        public Room getRoom(long id)
         {
             return _context.Rooms.FirstOrDefault(rt => rt.Id == id);
         }
 
-        public Customer getCustomerById(int id)
+        public Customer getCustomerById(long id)
         {
             return _context.Customers.FirstOrDefault(
                 c => c.Id == id
@@ -190,7 +190,7 @@ namespace HMS.Data
             return _context.RoomStatus.ToList();
         }
 
-        public RoomStatus GetRoomStatus(int id)
+        public RoomStatus GetRoomStatus(long id)
         {
             return _context.RoomStatus.FirstOrDefault(rs => rs.Id == id);
         }
@@ -231,7 +231,7 @@ namespace HMS.Data
             return _context.Reservation.ToList();
         }
 
-        public Reservation GetReservation(int id)
+        public Reservation GetReservation(long id)
         {
             return _context.Reservation.Where(r => r.Id == id).FirstOrDefault();
         }
@@ -246,7 +246,7 @@ namespace HMS.Data
                     select new
                     {
                         Id = r.Id,
-                        RoomNumber = r.RoomNo,
+                        RoomName = r.RoomName,
                         Rate = r.Rate,
                         RoomStatus = rs.Name,
                         RoomType = rt.Name,
@@ -281,7 +281,7 @@ namespace HMS.Data
 
        
 
-        public void updateRoomStatus(int roomId, RoomStatusEnum roomstatusenum)
+        public void updateRoomStatus(long roomId, RoomStatusEnum roomstatusenum)
         {
            var room = _context.Rooms.FirstOrDefault(r=>r.Id ==roomId);
            room.RoomStatusId=(int)roomstatusenum;
